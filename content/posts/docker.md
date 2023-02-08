@@ -1,10 +1,8 @@
 ---
-title: "Docker"
+title: "Maximize your Python Docker images: small, fast & secure"
 date: 2023-02-08T15:40:27+01:00
 draft: false
 ---
-
-## Maximize your Python Docker images: small, fast & secure
 
 ![Photo by [Rubaitul Azad](https://unsplash.com/pt-br/@rubaitulazad?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)](https://cdn-images-1.medium.com/max/6560/0*YfnDW9Ww-tcuPFFU)
 

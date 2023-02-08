@@ -1,7 +1,7 @@
 url = "https://www.bjornvandijkman.com"
 languageCode = "en-us"
 title = "Björn van Dijkman's Blog"
-theme = "m10c"
+theme = "PaperMod"
 
 [params]
   author = "Björn van Dijkman"
