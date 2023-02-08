@@ -1,7 +1,7 @@
 url = "https://www.bjornvandijkman.com"
 languageCode = "en-us"
 title = "Björn van Dijkman's Blog"
-theme = "PaperMod"
+theme = "m10c"
 
 [params]
   author = "Björn van Dijkman"
@@ -16,4 +16,3 @@ theme = "PaperMod"
     icon = "linkedin"
     name = "Linkedin"
     url = "https://www.linkedin.com/in/björn-van-dijkman-5103a671/"
-
