@@ -5,7 +5,8 @@ theme = "m10c"
 
 [params]
   author = "Björn van Dijkman"
-  description = "A blog about all things technical."
+  description = "A data engineering blog"
+
 
   [[params.social]]
     icon = "github"
