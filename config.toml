@@ -1,4 +1,4 @@
-url = "https://www.bjornvandijkman.com"
+baseUrl = "https://www.bjornvandijkman.com"
 languageCode = "en-us"
 title = "Björn van Dijkman's Blog"
 theme = "m10c"
