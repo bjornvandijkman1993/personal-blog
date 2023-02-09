@@ -1,5 +1,5 @@
 ---
-title: "K8 Service & Deployment"
+title: "K8s Service & Deployment"
 date: 2023-02-09T11:54:25+01:00
 draft: false
 ---
