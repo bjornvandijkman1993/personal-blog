@@ -1,10 +1,9 @@
 ---
-title: "Maximize your Python Docker images: small, fast & secure"
-date: 2023-02-08T15:40:27+01:00
-draft: false
----
+title: 'Maximize your Python Docker images: small, fast & secure'
+date: 2023-02-08T15:40:27.000+01:00
 
-![Photo by [Rubaitul Azad](https://unsplash.com/pt-br/@rubaitulazad?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)](https://cdn-images-1.medium.com/max/6560/0*YfnDW9Ww-tcuPFFU)
+---
+![Photo by ](https://cdn-images-1.medium.com/max/6560/0*YfnDW9Ww-tcuPFFU)
 
 In the world of **microservices**, it is important that your [**Docker**](https://www.docker.com) images allow for **quick deployment**, compact **size**, and enhanced **security**. In this blog, I will show you how to create a **secure** and **optimized** Docker image for a Python application, using [**Poetry**](https://python-poetry.org) as the dependency manager. By utilizing the CLI tool [**Dive**](https://github.com/wagoodman/dive) to examine the image and its layers, I will walk you through the steps to create an efficient Docker image. I wrote the Dockerfile to host a [FASTAPI](https://fastapi.tiangolo.com) server for a machine learning application, but those concepts are out of scope of this blog. 
 
@@ -18,7 +17,7 @@ I am using the [**slim](https://hub.docker.com/layers/library/python/3.11-slim/i
 
 The full Python Image ([python:3.11](https://hub.docker.com/layers/library/python/3.11/images/sha256-79f7c6a20b4c513556c949c356ee075c4eb31aff8f64d8b81eac0799adc0e223?context=explore)) includes extra development tools and documentation that are not necessary for running the application, making it much larger with a size of **875 **MB, around **7 times** larger than the slim version 😱.
 
-Another alternative is Alpine [python:3.11-alpine](https://hub.docker.com/layers/library/python/3.11-alpine/images/sha256-9f955672f82a7e7138bcb64bb8352fb0a3025533b8be90a789be5a32526497ca?context=explore), which is smaller with a size of **56.5** MB, but lacks the package installer pip and support for installing wheel packages, which is needed for installing applications like Pandas and Numpy. To install these applications, you would need to compile them from source files using compiler packages like [G++](https://www.geeksforgeeks.org/compiling-with-g-plus-plus/), which are also not installed by default on the Alpine image. This results in a larger image size (and a lot more hassle) than the slim version, so lets continue with that one. 
+Another alternative is Alpine [python:3.11-alpine](https://hub.docker.com/layers/library/python/3.11-alpine/images/sha256-9f955672f82a7e7138bcb64bb8352fb0a3025533b8be90a789be5a32526497ca?context=explore), which is smaller with a size of **56.5** MB, but lacks the package installer pip and support for installing wheel packages, which is needed for installing applications like Pandas and Numpy. To install these applications, you would need to compile them from source files using compiler packages like [G++](https://www.geeksforgeeks.org/compiling-with-g-plus-plus/), which are also not installed by default on the Alpine image. This results in a larger image size (and a lot more hassle) than the slim version, so lets continue with that one.
 
 ```Docker
 ENV PIP_DEFAULT_TIMEOUT=100 \
@@ -35,7 +34,7 @@ The ENV variables in the Dockerfile are set to optimize the behavior of pip and 
 
 ## Security
 
-![Photo by [FLY:D](https://unsplash.com/@flyd2069?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)](https://cdn-images-1.medium.com/max/15904/0*LcfOJjNZqamA3_B_)
+![Photo by ](https://cdn-images-1.medium.com/max/15904/0*LcfOJjNZqamA3_B_)
 
 Let’s move on to security, because there are a few aspects that are important. Running Docker containers as the **root** user is not recommended because the root user has complete control over the host system, including the ability to **modify** or **delete** files, start and stop services, and **access sensitive information**. To follow the **principle of least privilege**, it’s better to run the containers with only the minimum necessary privileges to run the application. To enhance security, we therefore create a non-root user for the Docker container named ‘appuser’.
 
@@ -53,6 +52,7 @@ RUN set -ex \
     && apt-get update \
     && apt-get upgrade -y
 ```
+
 Now that we have information on the available software packages, we can use the apt-get upgrade command to upgrade the packages currently installed in the container to their latest available versions. The -y flag is used to automatically answer yes to any prompts during the upgrade process.
 
 ⬆ The update process resulted in some automatically installed packages, package cache files, and package index files. These files are no longer required when running the application after they have served their purpose of helping upgrade the packages. We can safely remove these files using the following commands, which will reduce the size of the Docker image.
@@ -65,6 +65,7 @@ RUN set -ex apt-get autoremove -y \\
 ```
 
 A final security best-practice is to make sure that no secrets are included in the docker image. To help prevent this, you can add common secrets files and folders to your **.dockerignore** file:
+
 ```Docker
 **/.env
 **/.aws
@@ -75,7 +76,7 @@ You can also use [Trivy](https://github.com/aquasecurity/trivy), which will also
 
 ![VSCode extension for Trivy](https://cdn-images-1.medium.com/max/2054/1*dMoFS3WR84XuiYdCtrycMg.png)
 
-## Application files 
+## Application files
 
 Alright, now that we have set some environment variables and improved the security of our docker container, lets continue to the copying of the actual application files and installing the dependencies. We want to set the working directory to ‘/app’. This directory does not exist yet in the base image, but WORKDIR creates it for us if it doesn’t exist.
 
@@ -83,13 +84,14 @@ Alright, now that we have set some environment variables and improved the securi
 WORKDIR /app
 COPY pyproject.toml poetry.lock ./
 ```
+
 All subsequent instructions will be executed in this location, which makes our docker image more organized and portable.
 
 The COPY command is used to copy files from the host system to the container file system. In this case, we are copying pyproject.toml and poetry.lock, which are the configuration files for the Poetry package manager.
 
 ## Dive
 
-![Photo by [Sebastian Pena Lambarri](https://unsplash.com/@sebaspenalambarri?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)](https://cdn-images-1.medium.com/max/10944/0*Li3H1zhl_RUGaNm-)
+![Photo by ](https://cdn-images-1.medium.com/max/10944/0*Li3H1zhl_RUGaNm-)
 
 Now that we have completed some steps, lets build the docker image and dive into it to inspect 🕵️‍♀️ the different layers:
 
@@ -121,7 +123,7 @@ RUN set -ex \
     && rm -rf /var/lib/apt/lists/*
 ```
 
-This decreased the size of the image with 18 mb to a total size of 121 mb 🎉, which is exactly equal to the apt-get update && update-get upgrade -y layer that we had before. 
+This decreased the size of the image with 18 mb to a total size of 121 mb 🎉, which is exactly equal to the apt-get update && update-get upgrade -y layer that we had before.
 
 ## Caching
 
@@ -167,7 +169,7 @@ Let’s build the docker image again and check out the size:
 
 ![](https://cdn-images-1.medium.com/max/2000/1*WsSCcueCagpBEixHMntibg.png)
 
-The image now has a total size of **731** mb. **531** mb comes from the dependencies that were installed by Poetry, but Poetry itself also takes up some space. 
+The image now has a total size of **731** mb. **531** mb comes from the dependencies that were installed by Poetry, but Poetry itself also takes up some space.
 
 💡 Although Poetry is useful during the development phase for creating virtual environments and managing dependencies, these functionalities are not required when running the Docker image, as the image provides its own isolated environment and our dependencies have already been installed. Reducing the size of the Docker image can therfore also be achieved by ensuring that the Poetry package is not included in the final image.
 
@@ -175,7 +177,7 @@ The image now has a total size of **731** mb. **531** mb comes from the dependen
 
 ![](https://cdn-images-1.medium.com/max/2000/1*8r7gLDZCIMC6TtU27Omuvg.png)
 
-Multistage builds can be utilized to exclude Poetry from the final Docker image, because it enables the creation of multiple images from a single Dockerfile. Instead of installing the dependencies directly using Poetry, Poetry can also export the necessary dependencies to a **requirements.txt **file during the build stage. This file can be copied to the final stage, and be used by the **pip** to install the dependencies. 
+Multistage builds can be utilized to exclude Poetry from the final Docker image, because it enables the creation of multiple images from a single Dockerfile. Instead of installing the dependencies directly using Poetry, Poetry can also export the necessary dependencies to a **requirements.txt **file during the build stage. This file can be copied to the final stage, and be used by the **pip** to install the dependencies.
 
 ```Docker
 FROM python:3.11-slim as build
@@ -197,7 +199,7 @@ COPY --from=build /app/requirements.txt .
 RUN pip install -r requirements.txt
 ```
 
-By excluding Poetry in the final stage, the size of the Docker image is reduced, as demonstrated by the decrease from 732 MB to 538 MB 🎉🍾. 
+By excluding Poetry in the final stage, the size of the Docker image is reduced, as demonstrated by the decrease from 732 MB to 538 MB 🎉🍾.
 
 When running the docker image as **appuser**, it was not allowed to create any new files in the image. However, my application creates a new file in a subdirectory called artifacts whenever the application is run. To give appuser the permission to create this file, explicit permission needs to be given:
 
@@ -269,27 +271,3 @@ In conclusion, by following these tips and best practices when creating your Doc
 Make sure to choose the right base image, understand the immutability of Docker layers, put instructions in the right order, and follow the security best-practices.
 
 Thanks for reading! Feel free to reach out if you found this post interesting or if it helped you out in any way.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
