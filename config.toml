@@ -25,3 +25,24 @@ theme = "m10c"
 
 [markup.goldmark.renderer]
     unsafe = true
+
+
+# Site Menus
+[menu]
+    # Navbar Menus
+    [[menu.nav]]
+        name    = "About"
+        url     = "about"
+        weight  = 2
+    [[menu.nav]]
+        name    = "Talks"
+        url     = "talks"
+        weight  = 3
+    [[menu.nav]]
+        name    = "Blog"
+        url     = "blog"
+        weight  = 4
+    [[menu.nav]]
+        name    = "Contact"
+        url     = "contact"
+        weight  = 5
