@@ -5,7 +5,7 @@ theme = "m10c"
 
 [params]
   author = "Björn van Dijkman"
-  description = "A data engineering blog"
+  description = "A devops & data engineering blog"
 
 
   [[params.social]]
@@ -17,3 +17,11 @@ theme = "m10c"
     icon = "linkedin"
     name = "Linkedin"
     url = "https://www.linkedin.com/in/björn-van-dijkman-5103a671/"
+
+  [[params.social]]
+    icon = "youtube"
+    name = "Youtube"
+    url = "https://www.youtube.com/channel/UCw5ubOsLoMwoAhBwXq8ksZg"
+
+[markup.goldmark.renderer]
+    unsafe = true
