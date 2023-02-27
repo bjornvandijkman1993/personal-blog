@@ -20,7 +20,7 @@ languages:
         - name: About
           url: about/
           weight: 5
-        - name: Blogs
+        - name: Blog
           url: posts/
           weight: 7
         - name: Archive
@@ -32,17 +32,10 @@ languages:
         - name: Search
           url: search/
           weight: 11
-    params:
-      profileMode:
-        enabled: false
-        title: "Björn van Dijkman"
-        subtitle: "Welcome to my devops & data engineering blog"
-        imageUrl: "avatar.jpg"
-        imageTitle: "avatar"
-        imageWidth: 250
-        imageHeight: 250
 
 params:
+
+  
   env: production
   keywords: [Blog, OpenSource, Coding, Golang, Programming]
   author: "Björn van Dijkman"
@@ -59,14 +52,12 @@ params:
   ShowCodeCopyButtons: true
   displayFullLangName: true
 
-  editPost:
-    URL: "https://github.com/aimerneige/blog/content"
-    Text: "Suggest Changes"
-    appendFilePath: true
-
   homeInfoParams:
-    Title: "Björn van Dijkman"
-    Content: "A devops & data engineering blog 😁👋"
+    Title: "Hi, I'm Björn van Dijkman 👋"
+    Content: "**Data** and **Machine Learning Engineer** 🧑‍💻"
+    imageUrl: "avatar.jpg"
+    imageWidth: 120 # custom size
+    imageHeight: 120 # custom size
 
   socialIcons:
     - name: github

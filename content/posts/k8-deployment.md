@@ -11,7 +11,7 @@ cover:
 
 In [this](https://www.bjornvandijkman.com/posts/docker/) blog I talked about dockerizing a machine learning application. This article will be about deploying this application onto a Kubernetes cluster. Initially we will need to create two types of resources: a deployment and a service.
 
-### The deployment
+## Deployment
 A deployment describes the desired state for Pods and Replicasets. 👇 Down below you can see the deployment file for my FASTAPI application. 
 
 ```yaml
@@ -64,7 +64,7 @@ imagePullPolicy: Never
 as I am currently deploying local docker images that we do not need to pull from [docker hub](https://hub.docker.com). Port 8000 is the port which is open for communication between the containers and the service resource, which we will get to now. ⬇️
 
 
-### The service
+## Service
 This is an abstract way of exposing an application that is running on a set of Pods as a network service. 🤔 Can't we just expose the IP addresses of the pods itself? Well, no. The pods are nonpermanent resources, they can be created and destroyed, and will match the desired state of your deployment. Each pod does have its own IP address, but if a pot gets destroyed and recreated, it will have a new IP address. Communicating using the IP addresses of the pods is therefore not durable, and we need to connect applications in a different way. 
 
 💡 Enter the service resource. It defines a policy by which to access the pods. The set of pods to access by the service is usually determined by a **selector**. This abstraction enables the decoupling between different pods, meaning that they do not to keep track of each other in order to communicate.  

@@ -1,7 +1,7 @@
 ---
 title: "Makefiles"
 date: 2023-02-16T09:37:49+01:00
-draft: false
+draft: true
 
 cover:
     image: "makefiles.jpg"
