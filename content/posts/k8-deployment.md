@@ -2,6 +2,11 @@
 title: "K8s Service & Deployment"
 date: 2023-02-09T11:54:25+01:00
 draft: false
+
+cover:
+    image: "kubernetes.png"
+    alt: "kubernetes"
+    relative: false
 ---
 
 In [this](https://www.bjornvandijkman.com/posts/docker/) blog I talked about dockerizing a machine learning application. This article will be about deploying this application onto a Kubernetes cluster. Initially we will need to create two types of resources: a deployment and a service.

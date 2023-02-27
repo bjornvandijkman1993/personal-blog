@@ -2,8 +2,14 @@
 title: 'Maximize your Python Docker images: small, fast & secure'
 date: 2023-02-08T15:40:27.000+01:00
 
+cover:
+    image: "docker.jpeg"
+    alt: "Docker"
+    relative: false
+
+tags: ["docker", "security", "software engineering"]
+
 ---
-![Photo by ](https://cdn-images-1.medium.com/max/6560/0*YfnDW9Ww-tcuPFFU)
 
 In the world of **microservices**, it is important that your [**Docker**](https://www.docker.com) images allow for **quick deployment**, compact **size**, and enhanced **security**. In this blog, I will show you how to create a **secure** and **optimized** Docker image for a Python application, using [**Poetry**](https://python-poetry.org) as the dependency manager. By utilizing the CLI tool [**Dive**](https://github.com/wagoodman/dive) to examine the image and its layers, I will walk you through the steps to create an efficient Docker image. I wrote the Dockerfile to host a [FASTAPI](https://fastapi.tiangolo.com) server for a machine learning application, but those concepts are out of scope of this blog. 
 

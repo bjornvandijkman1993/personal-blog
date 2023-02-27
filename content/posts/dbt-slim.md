@@ -3,6 +3,15 @@ title: "How to use Slim CI with dbt Core"
 date: 2023-02-08T20:24:54+01:00
 draft: false
 description: "Run modified and new dbt models using dbt Core, Github Actions and Google Cloud Storage"
+
+cover:
+    image: "dbt-diagram.png"
+    alt: "slim ci diagram"
+    caption: "dbt diagram"
+    relative: false
+
+tags: ["dbt", "github actions", "google cloud storage"]
+
 ---
 
 

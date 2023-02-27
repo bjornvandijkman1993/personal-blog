@@ -1,0 +1,89 @@
+baseURL: "https://www.bjornvandijkman.com"
+languageCode: "en-us"
+title: "Björn van Dijkman's Blog"
+theme: "PaperMod"
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: true
+
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+    menu:
+      main:
+        - name: About
+          url: about/
+          weight: 5
+        - name: Blogs
+          url: posts/
+          weight: 7
+        - name: Archive
+          url: archives/
+          weight: 8
+        - name: Tags
+          url: tags/
+          weight: 9
+        - name: Search
+          url: search/
+          weight: 11
+    params:
+      profileMode:
+        enabled: false
+        title: "Björn van Dijkman"
+        subtitle: "Welcome to my devops & data engineering blog"
+        imageUrl: "avatar.jpg"
+        imageTitle: "avatar"
+        imageWidth: 250
+        imageHeight: 250
+
+params:
+  env: production
+  keywords: [Blog, OpenSource, Coding, Golang, Programming]
+  author: "Björn van Dijkman"
+  defaultTheme: light
+  disableThemeToggle: true
+  # TocSide: 'left'
+
+  ShowToc: true
+  TocOpen: true
+  ShowBreadCrumbs: false
+  ShowReadingTime: true
+  ShowPostNavLinks: true
+  ShowShareButtons: true
+  ShowCodeCopyButtons: true
+  displayFullLangName: true
+
+  editPost:
+    URL: "https://github.com/aimerneige/blog/content"
+    Text: "Suggest Changes"
+    appendFilePath: true
+
+  homeInfoParams:
+    Title: "Björn van Dijkman"
+    Content: "A devops & data engineering blog 😁👋"
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/bjornvandijkman1993"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/björn-van-dijkman-5103a671/"
+    - name: youtube
+      url: "https://www.youtube.com/channel/UCw5ubOsLoMwoAhBwXq8ksZg"
+
+taxonomies:
+  category: categories
+  tag: tags
+  series: series
+
+
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON # is necessary

@@ -1,0 +1,1 @@
+print("Extracting data from the source system...")
