@@ -1,8 +1,9 @@
 ---
-title : "About"
-hidemeta : true
-comments : false #optional
+title: About
+hidemeta: true
+comments: false
+
 ---
+![](/uploads/avatar.jpg)
 
-This is a blog about data engineering👋. I will be writing about my experiences with these topics, and I will also be sharing some of the projects that I have been working on. I hope that you will find the content on this blog useful.
-
+Hi, my name is Björn, and welcome to this blog where I write about various data engineering topics. I hope that you will find the content on this blog useful.
