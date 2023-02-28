@@ -42,6 +42,8 @@ params:
   disableThemeToggle: true
   # TocSide: 'left'
 
+
+  googleAnalyticsID: "G-3D72RZBQFW"
   ShowToc: true
   TocOpen: true
   ShowBreadCrumbs: false
@@ -71,7 +73,6 @@ taxonomies:
   tag: tags
   series: series
 
-googleAnalyticsID: "G-3D72RZBQFW"
 
 outputs:
     home:
