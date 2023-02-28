@@ -35,9 +35,8 @@ languages:
 
 params:
 
-  
   env: production
-  keywords: [Blog, OpenSource, Coding, Golang, Programming]
+  keywords: [Blog, OpenSource, Coding, Python, Programming]
   author: "Björn van Dijkman"
   defaultTheme: light
   disableThemeToggle: true
@@ -72,6 +71,7 @@ taxonomies:
   tag: tags
   series: series
 
+googleAnalyticsID: "G-3D72RZBQFW"
 
 outputs:
     home:
