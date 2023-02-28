@@ -4,7 +4,7 @@ date: 2023-02-09T11:54:25+01:00
 draft: true
 
 cover:
-    image: "images/kubernetes.png"
+    image: "images/cover.png"
     alt: "kubernetes"
     relative: true
 ---
