@@ -3,9 +3,9 @@ title: 'How to make your Python Docker images secure, fast & small'
 date: 2023-02-08T15:40:27.000+01:00
 
 cover:
-    image: "docker.jpeg"
+    image: "images/docker.jpeg"
     alt: "Docker"
-    relative: false
+    relative: true
 
 tags: ["docker", "security", "software engineering"]
 
@@ -18,7 +18,6 @@ I will be using the CLI tool [Dive](https://github.com/wagoodman/dive) to analyz
 ```Docker
 FROM python:3.11-slim as build
 ```
-
 
 I am using the [slim](https://hub.docker.com/layers/library/python/3.11-slim/images/sha256-1591aa8c01b5b37ab31dbe5662c5bdcf40c2f1bce4ef1c1fd24802dae3d01052?context=explore) version of Python 3.11 to minimize the size of the container and make it as **lightweight** as possible. It has a size of **121** MB.
 
@@ -39,9 +38,6 @@ ENV PIP_DEFAULT_TIMEOUT=100 \
 The ENV variables in the Dockerfile are set to optimize the behavior of pip and poetry during the installation of packages in the Docker container. Furthermore, I explicitly define the **Poetry** version to install.
 
 ## Security
-
-![Photo by [FLY:D](https://unsplash.com/@flyd2069?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)](https://cdn-images-1.medium.com/max/15904/0*LcfOJjNZqamA3_B_)
-
 Let’s move on to security, because there are a few aspects that are important. Running Docker containers as the **root** user is not recommended because the root user has complete control over the host system, including the ability to **modify** or **delete** files, start and stop services, and **access sensitive information**. To follow the **principle of least privilege**, it’s better to run the containers with only the minimum necessary privileges. To enhance security, we therefore create a non-root user for the Docker container named appuser.
 
 ```Docker
@@ -108,9 +104,6 @@ COPY pyproject.toml poetry.lock ./
 
 The COPY command is used to copy files from the host system to the container file system. In this case, we are copying pyproject.toml and poetry.lock, which are the configuration files for the Poetry package manager.
 ## Dive
-
-![Photo by ](https://cdn-images-1.medium.com/max/10944/0*Li3H1zhl_RUGaNm-)
-
 Now that we have completed some steps, lets build the docker image and dive into it to inspect 🕵️‍♀️ the different layers:
 
 ```bash
@@ -120,11 +113,11 @@ dive app:latest
 
 👇 We can see in each layer which changes were made compared to the previous layer. First we created an **app** directory using the WORKDIR command, followed by the copying of two files.
 
-![](https://cdn-images-1.medium.com/max/3844/1*0JS1YOLmAHyxByHETLACKg.png)
+![](images/first-attempt.png)
 
 The current image has a size of **139 MB**. It is looking pretty good, but a couple of improvements can be made to decrease its size. The first thing to remember is that files that are removed by subsequent layers in the system are actually still present in the images; they’re just inaccessible in the final layer.
 
-![](https://cdn-images-1.medium.com/max/2000/1*8M03e-cxUbCcjCvbQTvm5w.png)
+![](images/layers.png)
 
 👆Having the steps of installing the security updates and removing the now unnecessary files and packages separately therefore does not save any space. What does work is to combine these two steps into one.
 
@@ -193,7 +186,7 @@ The image now has a total size of **731** mb. **531** mb comes from the dependen
 
 ## Multistage builds
 
-![](https://cdn-images-1.medium.com/max/2000/1*8r7gLDZCIMC6TtU27Omuvg.png)
+![](images/check-sizes.png)
 
 Multistage builds can be utilized to exclude Poetry from the final Docker image, because it enables the creation of multiple images from a single Dockerfile. Instead of installing the dependencies directly using Poetry, Poetry can also export the necessary dependencies to a **requirements.txt** file during the build stage. This file can be copied to the final stage, and be used by the **pip** to install the dependencies.
 
