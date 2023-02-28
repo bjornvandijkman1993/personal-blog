@@ -1,6 +1,6 @@
 ---
 title: "Why Data Scientists Should Write Unit Tests for Their Code"
-date: 2023-02-28T13:58:41+01:00
+date: 2021-10-18T13:58:41+01:00
 draft: false
 
 cover:

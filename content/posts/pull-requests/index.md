@@ -1,6 +1,6 @@
 ---
 title: "How to Enforce Good Pull Requests on Github"
-date: 2023-02-28T13:51:43+01:00
+date: 2022-03-02T13:51:43+01:00
 draft: false
 
 cover:
