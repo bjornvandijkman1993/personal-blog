@@ -2,6 +2,11 @@
 title: "K8s Pods"
 date: 2023-05-02T11:07:51+02:00
 draft: false
+
+cover:
+    image: "images/pods.png"
+    alt: "kubernetes pods"
+    relative: true
 ---
 
 ### Introduction
