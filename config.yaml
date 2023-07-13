@@ -23,18 +23,15 @@ languages:
         - name: Blog
           url: posts/
           weight: 7
-        - name: Projects
-          url: projects/
-          weight: 8
         - name: Archive
           url: archives/
-          weight: 9
+          weight: 8
         - name: Tags
           url: tags/
-          weight: 10
+          weight: 9
         - name: Search
           url: search/
-          weight: 11
+          weight: 10
 
 
 params:
