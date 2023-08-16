@@ -1,7 +1,7 @@
 ---
 title: "BigQuery: Behind the Scenes"
 date: 2023-08-11T09:07:51+02:00
-draft: false
+draft: true
 ---
 
 - Serverless
